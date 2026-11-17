@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<!-- Yandex Metrika -->
+<script>
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=114312537','ym');
+ym(114312537,'init',{trackLinks:true,accurateTrackBounce:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114312537" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5ecf2"><meta name="description" content="TarotSpread — пространство Киры о таро, маленьких радостях и времени для себя."><title>Кира · TarotSpread</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -40,7 +48,13 @@ if ('ResizeObserver' in window) {
   [header, topStrip, contactTrigger].forEach(element => headerObserver.observe(element));
 }
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignContactButton);
-contactTrigger.addEventListener('click', () => contacts.showModal());
+contactTrigger.addEventListener('click', () => {
+  contacts.showModal();
+  ym(114312537, 'reachGoal', 'contact_open');
+});
+contacts.querySelectorAll('.contact-row').forEach(link => {
+  link.addEventListener('click', () => ym(114312537, 'reachGoal', 'telegram_click'));
+});
 contacts.querySelector('.modal-close').addEventListener('click', () => contacts.close());
 contacts.addEventListener('click', (event) => { if (event.target === contacts) contacts.close(); });
 </script></body></html>
